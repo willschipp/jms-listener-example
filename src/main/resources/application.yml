@@ -1,0 +1,13 @@
+spring:
+  activemq:
+    broker-url: vm://embedded?broker.persistent=false,useShutdownHook=false
+    in-memory: true
+    queue:
+      name: foo.bar
+      selector: customheader = 'hiya'
+  jms:
+    listener:
+      acknowledge-mode: auto
+      auto-startup: true
+    template:
+      default-destination: foo.bar

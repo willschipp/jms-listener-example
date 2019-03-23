@@ -23,10 +23,15 @@ public class Application implements CommandLineRunner {
         SpringApplication.run(Application.class,args);
     }
 
-    @JmsListener(destination = "${spring.activemq.queue.name}",selector = "${spring.activemq.queue.selector}")
+    @JmsListener(destination = "${spring.activemq.queue.name}")
     public void processMessage(String payload, @Headers Map<String,Object> headers) throws Exception {
-        logger.info("message received " + payload);
-        logger.info("headers " + headers);
+        if (payload.equalsIgnoreCase("hello world")) {
+            //throw Exception to roll back
+            logger.info("message ID " + headers.get("jms_messageId").toString() + " " + headers.get("id").toString() + " rejected");
+            throw new Exception("rejected");
+        } else {
+            logger.info("proceed...");
+        }
     }
 
     @Autowired

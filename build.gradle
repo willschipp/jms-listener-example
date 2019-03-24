@@ -16,5 +16,13 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-activemq'
+
+    //logging
+    compile "ch.qos.logback:logback-access:1.2.3"
+    compile "ch.qos.logback:logback-core:1.2.3"
+    compile "ch.qos.logback:logback-classic:1.2.3"
+    compile 'net.logstash.logback:logstash-logback-encoder:5.3'
+
+
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

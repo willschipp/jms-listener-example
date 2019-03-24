@@ -9,21 +9,10 @@ import org.springframework.jms.core.JmsTemplate;
 
 @EnableJms
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class Application {
 
     public static void main(String... args) {
         SpringApplication.run(Application.class,args);
     }
 
-    @Autowired
-    JmsTemplate jmsTemplate;
-
-
-    @Override
-    public void run(String... args) throws Exception {
-        jmsTemplate.convertAndSend("hello world",message -> {
-            message.setStringProperty("customheader","hiya");
-            return message;
-        });
-    }
 }

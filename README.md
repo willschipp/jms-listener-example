@@ -12,3 +12,7 @@ docker logs logstash -f
 Log messages will show up in the logstash docker log
 
 
+## KeyStore setup
+
+keytool -genkey -keyalg RSA -validity 365 -keystore server.keystore -storetype JKS
+
